@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{2BFE6E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testing", "testing\testing.csproj", "{F10C998F-4C41-4A20-8C40-062639B585DC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movement_speed", "movement_speed\movement_speed.csproj", "{8023FBB5-006D-4E3E-8F2C-602FBEB95381}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{F10C998F-4C41-4A20-8C40-062639B585DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F10C998F-4C41-4A20-8C40-062639B585DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F10C998F-4C41-4A20-8C40-062639B585DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

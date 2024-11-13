@@ -10,6 +10,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using KinematicCharacterController;
 
 public static class PluginInfo {
 
@@ -49,7 +50,7 @@ public class TestingPlugin : DDPlugin {
 		}
 	}
 
-	/*
+    /*
 	[HarmonyPatch(typeof(), "")]
 	class HarmonyPatch_ {
 		private static bool Prefix() {
