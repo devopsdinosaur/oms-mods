@@ -1,0 +1,3 @@
+[submodule "third-party/ConfigurationManager"]
+	path = third-party/ConfigurationManager
+	url = git@github.com:devopsdinosaur/BepInEx.ConfigurationManager.git
