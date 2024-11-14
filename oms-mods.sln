@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testing", "testing\testing.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movement_speed", "movement_speed\movement_speed.csproj", "{8023FBB5-006D-4E3E-8F2C-602FBEB95381}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationManager", "third-party\ConfigurationManager\ConfigurationManager\ConfigurationManager.csproj", "{B7A7E44D-538A-4D0D-B779-5A7FB5BD401B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "custom_configuration_manager", "custom_configuration_manager\custom_configuration_manager.csproj", "{45444468-CF7B-4A1B-9372-602D364AAACC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,18 +37,15 @@ Global
 		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8023FBB5-006D-4E3E-8F2C-602FBEB95381}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7A7E44D-538A-4D0D-B779-5A7FB5BD401B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7A7E44D-538A-4D0D-B779-5A7FB5BD401B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7A7E44D-538A-4D0D-B779-5A7FB5BD401B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7A7E44D-538A-4D0D-B779-5A7FB5BD401B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45444468-CF7B-4A1B-9372-602D364AAACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45444468-CF7B-4A1B-9372-602D364AAACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45444468-CF7B-4A1B-9372-602D364AAACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45444468-CF7B-4A1B-9372-602D364AAACC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D77BA37B-C185-47DA-86F9-9AB7A429378B}
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		third-party\ConfigurationManager\ConfigurationManager.Shared\ConfigurationManager.Shared.projitems*{b7a7e44d-538a-4d0d-b779-5a7fb5bd401b}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
