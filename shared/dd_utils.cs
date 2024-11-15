@@ -303,30 +303,33 @@ public static class ReflectionUtils {
         BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic |
         BindingFlags.FlattenHierarchy | BindingFlags.InvokeMethod | BindingFlags.CreateInstance;
 
-    public static string list_members(object obj) {
+    public static string list_members(object obj, Type type = null) {
+        if (type == null) {
+            type = obj.GetType();
+        }
         List<string> lines = new List<string>();
         if (obj == null) {
             return "object is null";
         }
-        lines.Add($"list_members (object type: {obj.GetType().Name})");
+        lines.Add($"list_members (object type: {type.Name})");
         foreach (FieldInfo field in obj.GetType().GetFields(BINDING_FLAGS_ALL)) {
             lines.Add($"--> field: {field.Name} ({field.FieldType.Name})");
         }
-        foreach (MethodInfo method in obj.GetType().GetMethods(BINDING_FLAGS_ALL)) {
+        foreach (MethodInfo method in type.GetMethods(BINDING_FLAGS_ALL)) {
             lines.Add($"--> method: {method.Name}");
         }
-        foreach (PropertyInfo property in obj.GetType().GetProperties(BINDING_FLAGS_ALL)) {
+        foreach (PropertyInfo property in type.GetProperties(BINDING_FLAGS_ALL)) {
             lines.Add($"--> property: {property.Name}");
         }
         return string.Join("\n", lines);
     }
 
-    public static FieldInfo get_field(object obj, string name) {
-        return obj.GetType().GetField(name, BINDING_FLAGS_ALL);
+    public static FieldInfo get_field(object obj, string name, Type type = null) {
+        return (type == null ? obj.GetType() : type).GetField(name, BINDING_FLAGS_ALL);
     }
 
-    public static object get_field_value(object obj, string name) {
-        return get_field(obj, name)?.GetValue(obj);
+    public static object get_field_value(object obj, string name, Type type = null) {
+        return get_field(obj, name, type)?.GetValue(obj);
     }
     /*
     public static Il2CppSystem.Reflection.FieldInfo il2cpp_get_field(Il2CppSystem.Object obj, string name) {
@@ -340,20 +343,20 @@ public static class ReflectionUtils {
         );
     }
     */
-    public static PropertyInfo get_property(object obj, string name) {
-        return obj.GetType().GetProperty(name, BINDING_FLAGS_ALL);
+    public static PropertyInfo get_property(object obj, string name, Type type = null) {
+        return (type == null ? obj.GetType() : type).GetProperty(name, BINDING_FLAGS_ALL);
     }
 
-    public static object get_property_value(object obj, string name) {
-        return get_property(obj, name)?.GetValue(obj);
+    public static object get_property_value(object obj, string name, Type type = null) {
+        return get_property(obj, name, type)?.GetValue(obj);
     }
 
-    public static MethodInfo get_method(object obj, string name) {
-        return obj.GetType().GetMethod(name, BINDING_FLAGS_ALL);
+    public static MethodInfo get_method(object obj, string name, Type type = null) {
+        return (type == null ? obj.GetType() : type).GetMethod(name, BINDING_FLAGS_ALL);
     }
 
-    public static object invoke_method(object obj, string name, object[] _params = null) {
-        return get_method(obj, name)?.Invoke(obj, (_params == null ? new object[] { } : _params));
+    public static object invoke_method(object obj, string name, object[] _params = null, Type type = null) {
+        return get_method(obj, name, type)?.Invoke(obj, (_params == null ? new object[] { } : _params));
     }
 
     public class EnumerateListEntriesCallbackParams {

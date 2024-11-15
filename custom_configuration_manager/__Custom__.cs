@@ -1,4 +1,6 @@
 using BepInEx;
+using BepInEx.Bootstrap;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using System;
@@ -37,17 +39,33 @@ namespace ConfigurationManager {
         }
 
         public class CcmInterface : MonoBehaviour {
-            private MethodInfo method_info_update;
+            private MethodInfo m_method_info_update;
+            private MethodInfo m_method_info_on_gui;
+            private ConfigEntry<KeyboardShortcut> m_keybind;
 
             private void Awake() {
-                method_info_update = typeof(ConfigurationManager).GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.InvokeMethod);
-                foreach (MethodInfo method in typeof(ConfigurationManager).GetMethods(ReflectionUtils.BINDING_FLAGS_ALL)) {
-                    _error_log(method.Name);
+                this.m_method_info_update = ReflectionUtils.get_method(CustomConfigManager.Instance, "Update", typeof(ConfigurationManager));
+                this.m_method_info_on_gui = ReflectionUtils.get_method(CustomConfigManager.Instance, "OnGUI", typeof(ConfigurationManager));
+                this.m_keybind = (ConfigEntry<KeyboardShortcut>) ReflectionUtils.get_field_value(CustomConfigManager.Instance, "_keybind", typeof(ConfigurationManager));
+                //foreach (MethodInfo method in typeof(ConfigurationManager).GetMethods(ReflectionUtils.BINDING_FLAGS_ALL)) {
+                //    _error_log(method.Name);
+                //}
+                _error_log($"keybind: {this.m_keybind.Value.MainKey}");
+            }
+            private bool m_prev_display = false;
+            private void Update() {
+                this.m_method_info_update.Invoke(CustomConfigManager.Instance, new object[] {});
+                if (CustomConfigManager.Instance.DisplayingWindow != this.m_prev_display) {
+                    this.m_prev_display = CustomConfigManager.Instance.DisplayingWindow;
+                    _error_log($"DisplayingWindow = {CustomConfigManager.Instance.DisplayingWindow}");
+                }
+                foreach (PluginInfo info in Chainloader.PluginInfos.Values) {
+                    _error_log($"location: {info.Location}, instance: {info.Instance}");
                 }
             }
 
-            private void Update() {
-                //method_info_update.Invoke(CustomConfigManager.Instance, new object[] {});
+            private void OnGUI() {
+                this.m_method_info_on_gui.Invoke(CustomConfigManager.Instance, new object[] {});
             }
         }
 

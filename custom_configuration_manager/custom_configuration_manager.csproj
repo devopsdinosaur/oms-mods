@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ConfigurationManagerDir>$(SolutionDir)\third-party\ConfigurationManager</ConfigurationManagerDir>
+    <KeyboardShortcutDir>$(ConfigurationManagerDir)\BepInEx.KeyboardShortcut</KeyboardShortcutDir>
     <MonoDir>$(ConfigurationManagerDir)\ConfigurationManager</MonoDir>
     <SharedDir>$(ConfigurationManagerDir)\ConfigurationManager.Shared</SharedDir>
   </PropertyGroup>
@@ -21,7 +22,4 @@
     <Compile Include="$(SharedDir)\Utilities\Utilities.cs" />
     <Compile Include="$(SharedDir)\ValueChangedEventArgs.cs" />
   </ItemGroup>
-  <Target Name="PreBuild" AfterTargets="PreBuildEvent">
-    <Exec Command="echo $(SharedDir)" />
-  </Target>
 </Project>
